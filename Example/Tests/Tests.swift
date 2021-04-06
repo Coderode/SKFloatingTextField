@@ -1,5 +1,5 @@
 import XCTest
-import SKFloatingTextField
+///import SKFloatingTextField
 
 class Tests: XCTestCase {
     

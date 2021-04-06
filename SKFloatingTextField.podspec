@@ -22,19 +22,16 @@ Pod::Spec.new do |s|
                        DESC
 
   s.homepage         = 'https://github.com/coderode/SKFloatingTextField'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.screenshots     = 'https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/tuto1.png', 'https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/tuto2.png','https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/tuto3.png','https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/tuto4.png','https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/screen1.png','https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/screen2.png','https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/screen3.png','https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/screen4.png','https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/screen5.png','https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/screen6.png','https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/screen7.png','https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/screen8.png'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'coderode' => 'sk9958814616@gmail.com' }
   s.source           = { :git => 'https://github.com/coderode/SKFloatingTextField.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.social_media_url = 'https://www.instagram.com/sandeep__kush/'
 
   s.ios.deployment_target = '13.0'
 
   s.source_files = 'SKFloatingTextField/Classes/**/*'
   s.swift_version = '5.0'
-  s.platforms = {
-      "ios" : "13.0"
-  }
   s.resource_bundles = {
    'SKFloatingTextField' => ['SKFloatingTextField/Classes/SKFloatingTextField.xib']
   }
