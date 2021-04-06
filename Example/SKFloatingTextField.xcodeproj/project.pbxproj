@@ -28,7 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1C9E376C73B8F7B6371EAFF1 /* SKFloatingTextField.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = SKFloatingTextField.podspec; path = ../SKFloatingTextField.podspec; sourceTree = "<group>"; };
+		1C9E376C73B8F7B6371EAFF1 /* SKFloatingTextField.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SKFloatingTextField.podspec; path = ../SKFloatingTextField.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		4065DA043EBA7A5409DB9BF1 /* Pods-SKFloatingTextField_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKFloatingTextField_Tests.debug.xcconfig"; path = "Target Support Files/Pods-SKFloatingTextField_Tests/Pods-SKFloatingTextField_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* SKFloatingTextField_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SKFloatingTextField_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -43,8 +43,8 @@
 		7C2BB1E09C501381712055EA /* Pods-SKFloatingTextField_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKFloatingTextField_Example.release.xcconfig"; path = "Target Support Files/Pods-SKFloatingTextField_Example/Pods-SKFloatingTextField_Example.release.xcconfig"; sourceTree = "<group>"; };
 		7D4A91DA5D7A73A53448BF88 /* Pods_SKFloatingTextField_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SKFloatingTextField_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		806388E30AF7D09CB229BAD7 /* Pods-SKFloatingTextField_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKFloatingTextField_Tests.release.xcconfig"; path = "Target Support Files/Pods-SKFloatingTextField_Tests/Pods-SKFloatingTextField_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		95AF665A547C4FF79277C223 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		EF458A3827DEE2A67D93EE2B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		95AF665A547C4FF79277C223 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		EF458A3827DEE2A67D93EE2B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		FB7662AFCE60A2ABC2E1F27D /* Pods-SKFloatingTextField_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKFloatingTextField_Example.debug.xcconfig"; path = "Target Support Files/Pods-SKFloatingTextField_Example/Pods-SKFloatingTextField_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		FE29D4AA369BD6729FAD62DD /* Pods_SKFloatingTextField_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SKFloatingTextField_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -156,7 +156,6 @@
 				4065DA043EBA7A5409DB9BF1 /* Pods-SKFloatingTextField_Tests.debug.xcconfig */,
 				806388E30AF7D09CB229BAD7 /* Pods-SKFloatingTextField_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -227,6 +226,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);

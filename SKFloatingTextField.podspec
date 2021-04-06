@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'SKFloatingTextField'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of SKFloatingTextField.'
+  s.summary          = 'This project will create a custom floating title textfield for iOS Applications.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+'This project will create a custom floating title textfield for iOS Applications. Just give the custom class to a view (height and width as needed for the textfield) as SKFloatingTextField in the storyboard. Also to make changes import the SKFloatingTextField in the UIViewController and make IBOUTLET of the view in the UIViewController and you will be ready access all the properties, methods, delegate available in it.'
                        DESC
 
   s.homepage         = 'https://github.com/coderode/SKFloatingTextField'
@@ -28,9 +28,13 @@ TODO: Add long description of the pod here.
   s.source           = { :git => 'https://github.com/coderode/SKFloatingTextField.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '13.0'
 
   s.source_files = 'SKFloatingTextField/Classes/**/*'
+  s.swift_version = '5.0'
+  s.platforms = {
+      "ios" : "13.0"
+  }
   s.resource_bundles = {
    'SKFloatingTextField' => ['SKFloatingTextField/Classes/SKFloatingTextField.xib']
   }
