@@ -1,0 +1,23 @@
+PODS:
+  - IQKeyboardManager (6.5.6)
+  - SKFloatingTextField (0.1.0)
+
+DEPENDENCIES:
+  - IQKeyboardManager
+  - SKFloatingTextField (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - IQKeyboardManager
+
+EXTERNAL SOURCES:
+  SKFloatingTextField:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
+  SKFloatingTextField: 11aab4ff481ee7b4c30edc8129fb9dc54fb7cfd7
+
+PODFILE CHECKSUM: 082d28e292404cd92a89ca1a9b9be545ec99da05
+
+COCOAPODS: 1.10.1

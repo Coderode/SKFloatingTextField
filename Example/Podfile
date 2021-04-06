@@ -4,7 +4,7 @@ platform :ios, '9.0'
 
 target 'SKFloatingTextField_Example' do
   pod 'SKFloatingTextField', :path => '../'
-
+  pod 'IQKeyboardManager'
   target 'SKFloatingTextField_Tests' do
     inherit! :search_paths
 

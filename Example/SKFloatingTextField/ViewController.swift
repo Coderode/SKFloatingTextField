@@ -7,18 +7,45 @@
 //
 
 import UIKit
-
+import SKFloatingTextField
 class ViewController: UIViewController {
 
+    @IBOutlet weak var floatingTextField: SKFloatingTextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        setTextFieldUI()
+    }
+    
+    func setTextFieldUI(){
+        floatingTextField.placeholder = "Username"
+        floatingTextField.activeBorderColor = .blue
+        floatingTextField.floatingLabelText = "Username"
+        floatingTextField.floatingLabelColor = .darkGray
+        //floatingTextField.setRectTFUI()
+        //floatingTextField.setRoundTFUI()
+        //floatingTextField.setOnlyBottomBorderTFUI()
+        floatingTextField.setCircularTFUI()
+        floatingTextField.delegate = self
+        //floatingTextField.errorLabelText = "Error"
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+}
+extension ViewController : SKFlaotingTextFieldDelegate {
+    
+    func textFieldDidEndEditing(textField: SKFloatingTextField) {
+        print("end editing")
     }
-
+    
+    func textFieldDidChangeSelection(textField: SKFloatingTextField) {
+        print("changing text")
+    }
+    
+    func textFieldDidBeginEditing(textField: SKFloatingTextField) {
+        print("begin editing")
+    }
+    
+    
 }
 

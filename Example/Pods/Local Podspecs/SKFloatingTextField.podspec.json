@@ -1,0 +1,27 @@
+{
+  "name": "SKFloatingTextField",
+  "version": "0.1.0",
+  "summary": "A short description of SKFloatingTextField.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/coderode/SKFloatingTextField",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "coderode": "sk9958814616@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/coderode/SKFloatingTextField.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "SKFloatingTextField/Classes/**/*",
+  "resource_bundles": {
+    "SKFloatingTextField": [
+      "SKFloatingTextField/Classes/SKFloatingTextField.xib"
+    ]
+  }
+}
