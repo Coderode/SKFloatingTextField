@@ -85,6 +85,22 @@ end
 
 ```
 
+## Demo Images
+![image1](https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/tuto1.png)
+![image1](https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/tuto2.png)
+![image1](https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/tuto3.png)
+![image1](https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/tuto4.png)
+![image1](https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/screen1.png)
+![image1](https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/screen2.png)
+![image1](https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/screen3.png)
+![image1](https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/screen4.png)
+![image1](https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/screen5.png)
+![image1](https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/screen6.png)
+![image1](https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/screen7.png)
+![image1](https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/screen8.png)
+
+
+
 
 ## Author
 

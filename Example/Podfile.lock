@@ -1,6 +1,6 @@
 PODS:
   - IQKeyboardManager (6.5.6)
-  - SKFloatingTextField (0.1.0)
+  - SKFloatingTextField (1.0.0)
 
 DEPENDENCIES:
   - IQKeyboardManager
@@ -16,7 +16,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
-  SKFloatingTextField: 0e1b3025b407ec4f13ab9d10f6a0419ba71d0e86
+  SKFloatingTextField: b6ee3e329d1a5466367758986d7c0fe3783b2014
 
 PODFILE CHECKSUM: 026a8b1f0c754077a2ab8a22dec547ec3b4a6ad9
 

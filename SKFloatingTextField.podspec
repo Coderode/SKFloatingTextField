@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SKFloatingTextField'
-  s.version          = '0.1.0'
+  s.version          = '1.0.0'
   s.summary          = 'This project will create a custom floating title textfield for iOS Applications.'
 
 # This description is used to generate tags and improve search results.
@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
                        DESC
 
   s.homepage         = 'https://github.com/coderode/SKFloatingTextField'
-  s.screenshots     = 'https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/tuto1.png', 'https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/tuto2.png','https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/tuto3.png','https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/tuto4.png','https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/screen1.png','https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/screen2.png','https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/screen3.png','https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/screen4.png','https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/screen5.png','https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/screen6.png','https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/screen7.png','https://github.com/Coderode/Images/blob/master/iOS/floating-textfield/screen8.png'
+#  s.screenshots     =
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'coderode' => 'sk9958814616@gmail.com' }
   s.source           = { :git => 'https://github.com/coderode/SKFloatingTextField.git', :tag => s.version.to_s }
