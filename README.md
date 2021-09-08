@@ -69,7 +69,6 @@ end
 9. func hideTitle()
 10. func showError()
 11. func hideError()
-12. 
 
 ```
 
