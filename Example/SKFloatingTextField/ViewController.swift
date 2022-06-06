@@ -29,6 +29,7 @@ class ViewController: UIViewController {
         floatingTextField.setCircularTFUI()
         floatingTextField.delegate = self
         //floatingTextField.errorLabelText = "Error"
+        floatingTextField.addLeftSpace(space: 20)
     }
 
 }

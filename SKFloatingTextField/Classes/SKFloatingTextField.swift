@@ -210,7 +210,7 @@ public class SKFloatingTextField : UIView {
         self.textColor = .black
         self.bottomErrorLabel.textAlignment = .left
         self.isSecureTextInput = false
-        self.setLeftImage(image: UIImage(), tintColor: .lightGray)
+        self.addLeftSpace(space: 10)
         self.bgColor = .white
         self.activeBorderColor = self.borderColor
         
@@ -278,6 +278,19 @@ public class SKFloatingTextField : UIView {
         self.textField.rightView = iconContainerView
         self.textField.rightViewMode = .always
         iconView.addTarget(self, action: #selector(didtapOnRightView), for: .touchUpInside)
+    }
+    /// Add blank space between and border from the left
+    public func addLeftSpace(space: Int) {
+        let iconContainerView: UIView = UIView(frame:CGRect(x: space, y: 0, width: space, height: 30))
+        self.textField.leftView = iconContainerView
+        self.textField.leftViewMode = .always
+    }
+    
+    /// Add blank space between text and border from the right
+    public func addRightSpace(space: Int) {
+        let iconContainerView: UIView = UIView(frame:CGRect(x: 0, y: space, width: space, height: 30))
+        self.textField.rightView = iconContainerView
+        self.textField.rightViewMode = .always
     }
     
     @objc private func didtapOnRightView(){
