@@ -19,179 +19,218 @@ public class SKFloatingTextField : UIView {
     @IBOutlet private weak var titleView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var bottomErrorLabel: UILabel!
-    
-    private var rightViewTapAction : ( (UIButton) -> () )?
+    private var rightViewButton : UIButton!
+    private var rightViewTapAction : ( (UIButton) -> Void )?
+    private var bottomBorderLayer : CALayer!
     /**
      *Member Variables
      **/
     /// isValidInput : make it true if the text field content is valid according to the user input validation else  take it false to work better with error label
     public var isValidInput : Bool = false
-    
-    public var rightView:UIView?{
-        get{
-            return self.textField.rightView
-        }
-        set{
-            self.textField.rightView = newValue
+    // MARK: - TextField
+    public var delegate: SKFlaotingTextFieldDelegate?
+    public var textAlignment : NSTextAlignment = .left {
+        didSet {
+            self.textField.textAlignment = self.textAlignment
         }
     }
-    
     public var keyBoardType : UIKeyboardType? {
-        get{
+        get {
             return self.textField.keyboardType
         }
-        set{
+        set {
             self.textField.keyboardType = newValue!
         }
     }
     public var isSecureTextInput: Bool {
-        set{
+        get {
+            return self.textField.isSecureTextEntry
+        } set {
             self.textField.isSecureTextEntry = newValue
         }
-        get{
-            return self.textField.isSecureTextEntry
-        }
-
     }
+    public var borderColor : UIColor  =  .gray {
+        didSet {
+            self.textField.layer.borderColor = borderColor.cgColor
+        }
+    }
+    // border color while editing the text in the text Field
+    public var activeBorderColor : UIColor?
+    // background color of the textField
+    public var bgColor : UIColor? {
+        didSet {
+            self.backgroundColor = self.bgColor
+            self.contentView.backgroundColor = self.bgColor
+            self.textField.backgroundColor = self.bgColor
+            self.bottomErrorLabel.backgroundColor = self.bgColor
+            self.titleLabel.backgroundColor = self.bgColor
+            self.titleView.backgroundColor = self.bgColor
+        }
+    }
+    public var borderWidth : CGFloat = 1 {
+        didSet {
+            self.textField.layer.borderWidth = self.borderWidth
+        }
+    }
+    public var cornerRadius : CGFloat? {
+        didSet {
+            self.textField.layer.cornerRadius = self.cornerRadius ?? 0
+        }
+    }
+    // MARK: - textField text
     public var text: String? {
-        get{
+        get {
             return textField.text
-        }set{
+        }set {
             textField.text = newValue
         }
     }
     public var textColor : UIColor? {
-        get{
+        get {
             return textField.textColor
-        }set{
+        }set {
             textField.textColor = newValue
         }
     }
-    public var placeholder: String?{
-        set{
-            textField.attributedPlaceholder = NSAttributedString(string: newValue!, attributes: [NSAttributedString.Key.foregroundColor : UIColor.gray])
+    public var textFont : UIFont = UIFont.systemFont(ofSize: 12, weight: .regular) {
+        didSet {
+            self.textField.font = textFont
         }
-        get{
+    }
+    // MARK: - placeholder
+    public var placeholder: String? {
+        get {
             return textField.placeholder
+        } set {
+            textField.attributedPlaceholder = NSAttributedString(string: newValue!, attributes: [NSAttributedString.Key.foregroundColor : placholderColor, NSAttributedString.Key.font : placeholderFont])
         }
     }
-    public override var inputView: UIView? {
-        set{
-            textField.inputView = newValue
-        }get{
-            return textField.inputView
+    public var placholderColor : UIColor = .gray {
+        didSet {
+            let text = self.textField.placeholder
+            textField.attributedPlaceholder = NSAttributedString(string: text ?? "", attributes: [NSAttributedString.Key.foregroundColor : placholderColor, NSAttributedString.Key.font : placeholderFont])
         }
     }
-    public var delegate: UITextFieldDelegate?{
-        set{
-            textField.delegate = newValue
-        }
-        get{
-            return textField.delegate
+    public var placeholderFont : UIFont = UIFont.systemFont(ofSize: 12, weight: .regular) {
+        didSet {
+            let text = self.textField.placeholder
+            textField.attributedPlaceholder = NSAttributedString(string: text ?? "", attributes: [NSAttributedString.Key.foregroundColor : placholderColor, NSAttributedString.Key.font : placeholderFont])
         }
     }
+    // MARK: - Floating Text Label
     public var floatingLabelText : String? {
-        set {
-            self.titleLabel.text = newValue
-        }
         get {
             return self.titleLabel.text
+        } set {
+            self.titleLabel.text = newValue
         }
     }
     public var floatingLabelColor : UIColor? {
-        set {
+        get {
+            return self.titleLabel.textColor
+        } set {
             self.titleLabel.textColor = newValue
         }
-        get{
-            return self.titleLabel.textColor
+    }
+    public var floatingLabelFont : UIFont = UIFont.systemFont(ofSize: 12, weight: .regular) {
+        didSet {
+            self.titleLabel.font = self.floatingLabelFont
         }
     }
+    public func showFloatingTitle() {
+        self.titleView.isHidden = false
+    }
+    public func hideFloatingTitle() {
+        self.titleView.isHidden = true
+    }
+    // MARK: - Error Label
     public var errorLabelText : String? {
-        set{
+        get {
+            return self.bottomErrorLabel.text
+        } set {
             self.bottomErrorLabel.text = newValue
             if newValue?.count ?? 0 > 0 {
                 self.textField.layer.borderColor = self.errorLabelColor.cgColor
                 self.titleLabel.textColor = self.errorLabelColor
                 self.bottomErrorLabel.isHidden = false
-            }else{
+            } else {
                 self.textField.layer.borderColor = self.borderColor.cgColor
                 self.titleLabel.textColor = self.floatingLabelColor
                 self.bottomErrorLabel.isHidden = true
             }
         }
-        get{
-            return self.bottomErrorLabel.text
-        }
     }
     public var errorLabelColor : UIColor {
-        set{
+        get {
+            return self.bottomErrorLabel.textColor
+        } set {
             self.bottomErrorLabel.textColor = newValue
         }
-        get{
-            return self.bottomErrorLabel.textColor
-        }
     }
-    
-    public var borderColor : UIColor  =  .gray
-    public var activeBorderColor : UIColor?
-    
-    public var floatingLabelFont : UIFont = UIFont.systemFont(ofSize: 12, weight: .regular) {
-        didSet{
-            self.titleLabel.font = self.floatingLabelFont
-        }
-    }
-    public var textFieldFont : UIFont = UIFont.systemFont(ofSize: 14, weight: .semibold) {
-        didSet{
-            self.textField.font = self.textFieldFont
-        }
-    }
-    public var errorLabelFont : UIFont = UIFont.systemFont(ofSize: 12, weight: .regular){
-        didSet{
+    public var errorLabelFont : UIFont = UIFont.systemFont(ofSize: 12, weight: .regular) {
+        didSet {
             self.bottomErrorLabel.font = self.errorLabelFont
         }
     }
-    public var bgColor : UIColor? {
-        didSet{
-            self.contentView.backgroundColor = self.bgColor
-            self.textField.backgroundColor = self.bgColor
-            self.bottomErrorLabel.backgroundColor = self.bgColor
-            self.titleLabel.backgroundColor = self.bgColor
+    public func showError() {
+        self.bottomErrorLabel.isHidden = false
+    }
+    public func hideError() {
+        self.bottomErrorLabel.isHidden = true
+    }
+    // MARK: - right view
+    public var rightView:UIView? {
+        get {
+            return self.textField.rightView
+        }
+        set {
+            self.textField.rightView = newValue
         }
     }
-    public var borderWidth : CGFloat = 1 {
-        didSet{
-            self.textField.layer.borderWidth = self.borderWidth
-        }
+    /// Set right side image like password secure / non secure button view with its action
+    public func setRightView(image : UIImage, tintColor : UIColor,action: ( (UIButton) -> Void )?) {
+        self.rightViewTapAction = action
+        self.rightViewButton = UIButton(frame: CGRect(x: 10, y: 10, width: 25, height: 25))
+        rightViewButton.setImage(image, for: .normal)
+        rightViewButton.tintColor = tintColor
+        let iconContainerView: UIView = UIView(frame: CGRect(x: 10, y: 0, width: 50, height: 40))
+        iconContainerView.addSubview(rightViewButton)
+        self.textField.rightView = iconContainerView
+        self.textField.rightViewMode = .always
+        rightViewButton.addTarget(self, action: #selector(didtapOnRightView), for: .touchUpInside)
     }
-    public var cornerRadius : CGFloat? {
-        didSet{
-            self.textField.layer.cornerRadius = self.cornerRadius ?? 0
-        }
+    public func changeRightViewImage(image : UIImage, tintColor : UIColor) {
+        self.rightViewButton.setImage(image, for: .normal)
+        self.rightViewButton.tintColor = tintColor
     }
-    public var textAlignment : NSTextAlignment = .left{
-        didSet{
-            self.textField.textAlignment = self.textAlignment
-        }
+    @objc private func didtapOnRightView() {
+        guard let rightview = self.textField.rightView?.subviews.first as? UIButton else { return }
+        rightViewTapAction?(rightview)
+        self.delegate?.didTapOnRightView?(textField: self)
     }
-    
+    // MARK: - left view
+    /// Set left side image in the textField
+    public func setLeftImage(image : UIImage,tintColor : UIColor) {
+        let iconView = UIImageView(frame:CGRect(x: 0, y: 10, width: 12, height: 11))
+        iconView.image = image
+        iconView.tintColor = tintColor
+        let iconContainerView: UIView = UIView(frame:CGRect(x: 0, y: 0, width: 15, height: 30))
+        iconContainerView.addSubview(iconView)
+        self.textField.leftView = iconContainerView
+        self.textField.leftViewMode = .always
+    }
+    //MARK: - Initializer
     public override func awakeFromNib() {
         super.awakeFromNib()
-        commoninit()
     }
-    
-    /// Initializer
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        commoninit()
-
+         commoninit()
     }
-
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        commoninit()
+         commoninit()
     }
-    
     private func commoninit(){
         Bundle(identifier: "org.cocoapods.SKFloatingTextField")?.loadNibNamed("SKFloatingTextField", owner: self, options: nil)
         addSubview(contentView)
@@ -203,7 +242,7 @@ public class SKFloatingTextField : UIView {
         self.textField.layer.borderColor = self.borderColor.cgColor
         self.borderWidth = 1
         self.floatingLabelFont = UIFont.systemFont(ofSize: 12, weight: .regular)
-        self.textFieldFont = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        self.textFont = UIFont.systemFont(ofSize: 14, weight: .semibold)
         self.errorLabelFont = UIFont.systemFont(ofSize: 12, weight: .regular)
         self.titleLabel.textAlignment = .left
         self.floatingLabelColor = .gray
@@ -213,126 +252,78 @@ public class SKFloatingTextField : UIView {
         self.setLeftImage(image: UIImage(), tintColor: .lightGray)
         self.bgColor = .white
         self.activeBorderColor = self.borderColor
-        
-        //text field editing action
+        // text field editing action
         self.textField.addTarget(self, action: #selector(textFieldDidEndEditing), for: .editingDidEnd)
         self.textField.addTarget(self, action: #selector(textFieldDidBeginEditing), for: .editingDidBegin)
         self.textField.addTarget(self, action: #selector(textFieldDidChangeSelection), for: .editingChanged)
-        
+        self.textField.tintColor = .black
     }
+    // MARK: - Designs
     /**
      Member Methods
      ***/
-    
     /// Setting some common text Field UI Designs
     /// Circular corner radius
-    public func setCircularTFUI(){
+    public func setCircularTFUI() {
         self.cornerRadius = self.textField.layer.frame.size.height/2
     }
     /// having only bottom border
-    public func setOnlyBottomBorderTFUI(){
-        let bottomLine = CALayer()
-        bottomLine.frame = CGRect(x: 0.0, y: self.textField.frame.size.height - 1, width: self.textField.frame.size.width, height: 1.0)
-        bottomLine.backgroundColor = self.borderColor.cgColor
+    public func setOnlyBottomBorderTFUI() {
+        self.bottomBorderLayer = CALayer()
+        bottomBorderLayer.frame = CGRect(x: 0.0, y: self.textField.frame.size.height - 1, width: self.textField.frame.size.width, height: 1.0)
+        bottomBorderLayer.backgroundColor = self.borderColor.cgColor
         self.textField.borderStyle = .none
         self.textField.layer.borderWidth = 0
         self.textField.layer.masksToBounds = true
-        self.textField.layer.addSublayer(bottomLine)
+        self.textField.layer.addSublayer(bottomBorderLayer)
+    }
+    public func updateBottomBorderColor() {
+        self.bottomBorderLayer.backgroundColor = self.borderColor.cgColor
     }
     /// Round Text field
-    public func setRoundTFUI(){
+    public func setRoundTFUI() {
         self.cornerRadius = 5
     }
-    ///Rectangular text field
-    public func setRectTFUI(){
+    /// Rectangular text field
+    public func setRectTFUI() {
         self.cornerRadius = 0
     }
-    
     /// set droppable if you have to put action on tap gesture on the entire textField the acton will be performed using didtaponRightView delegate method
-    public func setDroppable(){
+    public func setDroppable() {
         self.textField.isSecureTextEntry = false
         self.textField.isEnabled = false
         let tap = UITapGestureRecognizer(target: self, action: #selector(didtapOnRightView))
         self.addGestureRecognizer(tap)
     }
-    
-    /// Set left side image in the textField
-    public func setLeftImage(image : UIImage,tintColor : UIColor){
-        let iconView = UIImageView(frame:CGRect(x: 10, y: 10, width: 13, height: 11))
-        iconView.image = image
-        iconView.tintColor = tintColor
-        let iconContainerView: UIView = UIView(frame:CGRect(x: 30, y: 0, width: 30, height: 30))
-        iconContainerView.addSubview(iconView)
-        self.textField.leftView = iconContainerView
-        self.textField.leftViewMode = .always
-    }
-    
-    /// Set right side image like password secure / non secure button view with its action
-    public func setRightView(image : UIImage, tintColor : UIColor,action: ( (UIButton) -> () )?){
-        self.rightViewTapAction = action
-        let iconView = UIButton(frame: CGRect(x: 10, y: 10, width: 20, height: 14))
-        iconView.setImage(image, for: .normal)
-        iconView.tintColor = tintColor
-        let iconContainerView: UIView = UIView(frame: CGRect(x: 10, y: 0, width: 40, height: 30))
-        iconContainerView.addSubview(iconView)
-        self.textField.rightView = iconContainerView
-        self.textField.rightViewMode = .always
-        iconView.addTarget(self, action: #selector(didtapOnRightView), for: .touchUpInside)
-    }
-    
-    @objc private func didtapOnRightView(){
-        guard let rightview = self.textField.rightView?.subviews.first as? UIButton else { return }
-        rightViewTapAction?(rightview)
-        (self.delegate as? SKFlaotingTextFieldDelegate)?.didTapOnRightView?(textField: self)
-    }
-    
-    public func showTitle(){
-        self.titleView.isHidden = false
-    }
-    
-    public func hideTitle(){
-        self.titleView.isHidden = true
-    }
-    
-    public func showError(){
-        self.bottomErrorLabel.isHidden = false
-    }
-    public func hideError(){
-        self.bottomErrorLabel.isHidden = true
-    }
-    
 }
-extension SKFloatingTextField{
+extension SKFloatingTextField {
     @objc fileprivate func textFieldDidEndEditing() {
         if self.textField.text == "" {
             self.placeholder = self.floatingLabelText
-            self.hideTitle()
-        }else if self.isValidInput {
+            self.hideFloatingTitle()
+        } else if self.isValidInput {
             self.errorLabelText = ""
         }
-        if let _ = self.activeBorderColor {
+        if self.activeBorderColor != nil {
             self.textField.layer.borderColor = self.borderColor.cgColor
-            self.floatingLabelColor = self.borderColor
         }
-        (self.delegate as? SKFlaotingTextFieldDelegate)?.textFieldDidEndEditing?(textField: self)
+        self.delegate?.textFieldDidEndEditing?(textField: self)
     }
     @objc fileprivate func textFieldDidBeginEditing() {
-        self.showTitle()
+        self.showFloatingTitle()
         self.placeholder = ""
         if let color = self.activeBorderColor {
             self.textField.layer.borderColor = color.cgColor
-            self.floatingLabelColor = color
         }
-        (self.delegate as? SKFlaotingTextFieldDelegate)?.textFieldDidBeginEditing?(textField: self)
+        self.delegate?.textFieldDidBeginEditing?(textField: self)
     }
     @objc fileprivate func textFieldDidChangeSelection() {
         self.placeholder = ""
-        self.showTitle()
+        self.showFloatingTitle()
         self.errorLabelText = ""
         if let color = self.activeBorderColor {
             self.textField.layer.borderColor = color.cgColor
-            self.floatingLabelColor = color
         }
-        (self.delegate as? SKFlaotingTextFieldDelegate)?.textFieldDidChangeSelection?(textField: self)
+        self.delegate?.textFieldDidChangeSelection?(textField: self)
     }
 }
