@@ -31,6 +31,7 @@ class ViewController: UIViewController {
         
         self.view.backgroundColor = .lightGray
         //floatingTextField.errorLabelText = "Error"
+        floatingTextField.addLeftSpace(space: 20)
     }
 
 }

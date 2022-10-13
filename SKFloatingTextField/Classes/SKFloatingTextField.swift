@@ -249,7 +249,7 @@ public class SKFloatingTextField : UIView {
         self.textColor = .black
         self.bottomErrorLabel.textAlignment = .left
         self.isSecureTextInput = false
-        self.setLeftImage(image: UIImage(), tintColor: .lightGray)
+        self.addLeftSpace(space: 10)
         self.bgColor = .white
         self.activeBorderColor = self.borderColor
         // text field editing action
@@ -294,6 +294,19 @@ public class SKFloatingTextField : UIView {
         self.textField.isEnabled = false
         let tap = UITapGestureRecognizer(target: self, action: #selector(didtapOnRightView))
         self.addGestureRecognizer(tap)
+    }
+    /// Add blank space between and border from the left
+    public func addLeftSpace(space: Int) {
+        let iconContainerView: UIView = UIView(frame:CGRect(x: space, y: 0, width: space, height: 30))
+        self.textField.leftView = iconContainerView
+        self.textField.leftViewMode = .always
+    }
+    
+    /// Add blank space between text and border from the right
+    public func addRightSpace(space: Int) {
+        let iconContainerView: UIView = UIView(frame:CGRect(x: 0, y: space, width: space, height: 30))
+        self.textField.rightView = iconContainerView
+        self.textField.rightViewMode = .always
     }
 }
 extension SKFloatingTextField {
