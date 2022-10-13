@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SKFloatingTextField'
-  s.version          = '1.0.1'
+  s.version          = '1.0.2'
   s.summary          = 'This project will create a custom floating title textfield for iOS Applications.'
 
 # This description is used to generate tags and improve search results.
@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/coderode/SKFloatingTextField.git', :tag => s.version.to_s }
   s.social_media_url = 'https://www.instagram.com/sandeep__kush/'
 
-  s.ios.deployment_target = '13.0'
+  s.ios.deployment_target = '12.0'
 
   s.source_files = 'SKFloatingTextField/Classes/**/*'
   s.swift_version = '5.0'

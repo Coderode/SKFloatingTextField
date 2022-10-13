@@ -9,25 +9,27 @@
 import UIKit
 import SKFloatingTextField
 class ViewController: UIViewController {
-
     @IBOutlet weak var floatingTextField: SKFloatingTextField!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         setTextFieldUI()
     }
-    
     func setTextFieldUI(){
         floatingTextField.placeholder = "Username"
         floatingTextField.activeBorderColor = .blue
+        floatingTextField.borderColor = .black
+        floatingTextField.borderWidth = 1
         floatingTextField.floatingLabelText = "Username"
-        floatingTextField.floatingLabelColor = .darkGray
+        floatingTextField.floatingLabelColor = .black
+        floatingTextField.bgColor = .lightGray
         //floatingTextField.setRectTFUI()
         //floatingTextField.setRoundTFUI()
         //floatingTextField.setOnlyBottomBorderTFUI()
         floatingTextField.setCircularTFUI()
         floatingTextField.delegate = self
+        
+        self.view.backgroundColor = .lightGray
         //floatingTextField.errorLabelText = "Error"
         floatingTextField.addLeftSpace(space: 20)
     }
@@ -46,7 +48,5 @@ extension ViewController : SKFlaotingTextFieldDelegate {
     func textFieldDidBeginEditing(textField: SKFloatingTextField) {
         print("begin editing")
     }
-    
-    
 }
 
